@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.member.model.dao.MemberDAO">
+    <resultMap id="memberResultMap" type="com.member.model.dto.MemberDTO">
+        <id property="memberCode" column="MEMBER_CODE"/>
+        <result property="memberName" column="MEMBER_NAME"/>
+        <result property="birthDate" column="BIRTH_DATE"/>
+        <result property="categoryCode" column="CATEGORY_CODE"/>
+        <result property="introduce" column="INTRODUCE"/>
+        <result property="contact" column="CONTACT"/>
+        <result property="startDate" column="START_DATE"/>
+        <result property="activeStatus" column="ACTIVE_STATUS"/>
+    </resultMap>
+
+    <select id="selectAllMember" resultMap="memberResultMap">
+        SELECT MEMBER_CODE
+            ,  MEMBER_NAME
+            ,  BIRTH_DATE
+            ,  CATEGORY_CODE
+            ,  INTRODUCE
+            ,  CONTACT
+            ,  START_DATE
+            ,  ACTIVE_STATUS
+        FROM member_info
+        ORDER BY MEMBER_CODE
+    </select>
+
+    <select id="selectNewMemberId" resultType="java.lang.String">
+        <!-- MEDIUM INT는 0부터 16,777,215까지 범위 -->
+        SELECT LPAD(MAX(MEMBER_CODE) + 1, 8, '0') AS MEMBER_CODE
+        FROM member_info;
+    </select>
+
+
+    <select id="selectMemberById" parameterType="hashmap" resultMap="memberResultMap">
+        SELECT MEMBER_CODE
+            ,  MEMBER_NAME
+            ,  BIRTH_DATE
+            ,  CATEGORY_CODE
+            ,  INTRODUCE
+            ,  CONTACT
+            ,  START_DATE
+            ,  ACTIVE_STATUS
+        FROM member_info
+        WHERE MEMBER_CODE = #{memberId}
+        ORDER BY MEMBER_CODE
+    </select>
+
+    <insert id="registMember" parameterType="com.member.model.dto.MemberDTO">
+        INSERT INTO member_info (
+                                    MEMBER_NAME
+                                ,   BIRTH_DATE
+                                ,   CATEGORY_CODE
+                                ,   INTRODUCE
+                                ,   CONTACT
+                                ,   START_DATE
+                                ,   ACTIVE_STATUS
+                                )
+        VALUES
+                                (
+                                    #{memberName}
+                                ,   #{birthDate}
+                                ,   #{categoryCode}
+                                ,   #{introduce}
+                                ,   #{contact}
+                                ,   #{startDate}
+                                ,   #{activeStatus}
+
+                                )
+
+    </insert>
+
+    <!-- 전에서 공백 modify 필요! -->
+    <update id="modifyMember" parameterType="com.member.model.dto.MemberDTO">
+        UPDATE
+            member_info
+        <set>
+            <if test="memberName != ''">
+                MEMBER_NAME = #{memberName}
+            </if>
+            <if test="birthDate != ''">
+                , BIRTH_DATE = #{birthDate}
+            </if>
+            <if test="categoryCode != ''">
+                , CATEGORY_CODE = #{categoryCode}
+            </if>
+            <if test="introduce != ''">
+                , INTRODUCE = #{introduce}
+            </if>
+            <if test="contact != ''">
+                , CONTACT = #{contact}
+            </if>
+            <if test="startDate != ''">
+                , START_DATE = #{startDate}
+            </if>
+            <if test="activeStatus != ''">
+                , ACTIVE_STATUS = #{activeStatus}
+            </if>
+        </set>
+        WHERE MEMBER_CODE = #{ memberCode }
+    </update>
+
+    <delete id="deleteMember" parameterType="hashmap">
+        DELETE
+        FROM member_info
+        WHERE MEMBER_CODE = #{ memberId }
+    </delete>
+</mapper>

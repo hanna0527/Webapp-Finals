@@ -2,9 +2,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>WebApp Finals</title>
+    <title>WebApp Finals Blog</title>
 </head>
 <body>
-
+    <jsp:forward page="/WEB-INF/views/main/main.jsp"/>
 </body>
 </html>

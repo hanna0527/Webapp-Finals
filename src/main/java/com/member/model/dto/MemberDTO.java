@@ -1,4 +1,6 @@
-package member.model.dto;
+package com.member.model.dto;
+
+import java.sql.Date;
 
 public class MemberDTO implements java.io.Serializable{
     private int memberCode;
@@ -6,19 +8,21 @@ public class MemberDTO implements java.io.Serializable{
     private String birthDate;
     private String categoryCode;
     private String introduce;
+    private String contact;
     private String startDate;
-    private String activateStatus;
+    private String activeStatus;
 
     public MemberDTO () {}
 
-    public MemberDTO(int memberCode, String memberName, String birthDate, String categoryCode, String interduce, String startDate, String activateStatus) {
+    public MemberDTO(int memberCode, String memberName, String birthDate, String categoryCode, String introduce, String contact, String startDate, String activeStatus) {
         this.memberCode = memberCode;
         this.memberName = memberName;
         this.birthDate = birthDate;
         this.categoryCode = categoryCode;
-        this.introduce = interduce;
+        this.introduce = introduce;
+        this.contact = contact;
         this.startDate = startDate;
-        this.activateStatus = activateStatus;
+        this.activeStatus = activeStatus;
     }
 
     public int getMemberCode() {
@@ -53,12 +57,20 @@ public class MemberDTO implements java.io.Serializable{
         this.categoryCode = categoryCode;
     }
 
-    public String getInterduce() {
+    public String getIntroduce() {
         return introduce;
     }
 
-    public void setInterduce(String interduce) {
-        this.introduce = interduce;
+    public void setIntroduce(String introduce) {
+        this.introduce = introduce;
+    }
+
+    public String getContact() {
+        return contact;
+    }
+
+    public void setContact(String contact) {
+        this.contact = contact;
     }
 
     public String getStartDate() {
@@ -69,12 +81,12 @@ public class MemberDTO implements java.io.Serializable{
         this.startDate = startDate;
     }
 
-    public String getActivateStatus() {
-        return activateStatus;
+    public String getActiveStatus() {
+        return activeStatus;
     }
 
-    public void setActivateStatus(String activateStatus) {
-        this.activateStatus = activateStatus;
+    public void setActiveStatus(String activeStatus) {
+        this.activeStatus = activeStatus;
     }
 
     @Override
@@ -85,8 +97,9 @@ public class MemberDTO implements java.io.Serializable{
                 ", birthDate='" + birthDate + '\'' +
                 ", categoryCode='" + categoryCode + '\'' +
                 ", introduce='" + introduce + '\'' +
+                ", contact='" + contact + '\'' +
                 ", startDate='" + startDate + '\'' +
-                ", activateStatus='" + activateStatus + '\'' +
+                ", activeStatus='" + activeStatus + '\'' +
                 '}';
     }
 }
