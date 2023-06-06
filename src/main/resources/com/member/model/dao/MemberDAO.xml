@@ -49,7 +49,8 @@
 
     <insert id="registMember" parameterType="com.member.model.dto.MemberDTO">
         INSERT INTO member_info (
-                                    MEMBER_NAME
+                                    MEMBER_CODE
+                                ,   MEMBER_NAME
                                 ,   BIRTH_DATE
                                 ,   CATEGORY_CODE
                                 ,   INTRODUCE
@@ -59,7 +60,8 @@
                                 )
         VALUES
                                 (
-                                    #{memberName}
+                                    #{memberCode}
+                                ,   #{memberName}
                                 ,   #{birthDate}
                                 ,   #{categoryCode}
                                 ,   #{introduce}

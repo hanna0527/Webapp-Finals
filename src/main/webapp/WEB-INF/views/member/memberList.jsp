@@ -29,5 +29,7 @@
         <td>${ member.activeStatus }</td>
     </tr>
     </c:forEach>
+
+    <h3><a href="${pageContext.servletContext.contextPath}/member/main">메인 화면으로 돌아가기</a></h3>
 </body>
 </html>

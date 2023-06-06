@@ -15,7 +15,7 @@ public class UpdateMemberServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         int memberId = Integer.parseInt(request.getParameter("memberId"));
-        String memberName = request.getParameter("memberName");
+        String memberName = request.getParameter("memberName").trim();
         String birthDate = request.getParameter("birthDate").replace("-", "");
         String categoryCode = request.getParameter("categoryCode");
         String introduce = request.getParameter("introduce");
@@ -37,10 +37,10 @@ public class UpdateMemberServlet extends HttpServlet {
         String path = "";
         if(result) {
             path = "/WEB-INF/views/common/successPage.jsp";
-            request.setAttribute("successCode", "updateEmp");
+            request.setAttribute("successCode", "update");
         } else {
             path = "/WEB-INF/views/common/errorPage.jsp";
-            request.setAttribute("message", "회원 정보 수정 실패!");
+            request.setAttribute("errorCode", "update");
         }
 
         request.getRequestDispatcher(path).forward(request, response);

@@ -20,7 +20,7 @@ public class InsertMemberServlet extends HttpServlet {
         Calendar calendar = Calendar.getInstance();
         String today = sdf.format(calendar.getTime());
 
-        String memberName = request.getParameter("memberName");
+        String memberName = request.getParameter("memberName").trim();
         String birthDate = request.getParameter("birthDate").replace("-", "");
         String categoryCode = request.getParameter("categoryCode");
         String introduce = request.getParameter("introduce");
@@ -30,7 +30,9 @@ public class InsertMemberServlet extends HttpServlet {
         String newMemberId = memberService.selectNewMemberId();
 
         MemberDTO member = new MemberDTO();
-        if(newMemberId != null) member.setMemberCode(Integer.parseInt(newMemberId));
+        if(newMemberId != null) {
+            member.setMemberCode(Integer.parseInt(newMemberId));
+        }
         member.setMemberName(memberName);
         member.setBirthDate(birthDate);
         member.setCategoryCode(categoryCode);

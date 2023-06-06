@@ -32,7 +32,7 @@
           <option value="9">금융 /투자</option>
       </select><br>
       자기 소개 :<br> <textarea id="introduce" name="introduce" cols="50" rows="10" maxlength="500"></textarea><br>
-      전화 번호 (010-xxxx-xxxx) : <input type="tel" name="contact" maxlength="50"><br>
+      전화 번호 (xxx-xxxx-xxxx) : <input type="tel" name="contact" maxlength="50"><br>
       <button type="submit">회원 등록</button>
   </form>
 
@@ -44,6 +44,7 @@
       생년 월일 : <input type="date" name="birthDate"><br>
       장르 코드 :
       <select name="categoryCode">
+          <option value="">수정하지 않음</option>
         <option value="1">개인</option>
         <option value="2">전문가</option>
         <option value="3">기업</option>

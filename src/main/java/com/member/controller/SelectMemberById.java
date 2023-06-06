@@ -28,7 +28,7 @@ public class SelectMemberById extends HttpServlet {
             request.setAttribute("selectedMember", result);
         } else {
             path = "/WEB-INF/views/common/errorPage.jsp";
-            request.setAttribute("message", "직원 정보 조회 실패!");
+            request.setAttribute("errorCode", "selectedMember");
         }
 
         request.getRequestDispatcher(path).forward(request, response);
