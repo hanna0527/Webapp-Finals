@@ -95,6 +95,25 @@
       <br>
   </form>
 
+  <!-- 수정할 회원번호만 적고 나머지 수정 input들은 하나도 적지 않은 경우 -->
+  <script>
+      document.getElementById("update").addEventListener('submit', function(event) {
+          let form = document.getElementById("update");
+          let inputs = form.querySelectorAll('input:not(#memberIdUpdate), select, textarea');
+
+          for(var i = 0; i<inputs.length; i++) {
+              var input = inputs[i];
+              if (input.value.trim() !== '') {
+                  form.submit();
+                  return
+              } else {
+                  event.preventDefault();
+              }
+
+          }
+          alert("수정될 데이터가 없습니다!")
+      });
+  </script>
 
 <h3>해당하는 회원 코드의 회원 삭제하기</h3>
   <form action="${ pageContext.servletContext.contextPath }/member/delete" method="post">
