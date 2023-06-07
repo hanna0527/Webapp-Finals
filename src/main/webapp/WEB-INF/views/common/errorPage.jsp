@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" errorPage="/WEB-INF/views/common/exceptionPage.jsp"%>
 <html>
 <head>
     <title>error</title>
@@ -18,13 +18,13 @@
                     errorMessage = '해당 회원은 존재하지 않습니다!';
                     break;
                 case 'insert' :
-                    errorMessage = '신규 직원 등록 실패!';
+                    errorMessage = '신규 회원 등록 실패!';
                     break;
                 case 'update' :
-                    errorMessage = '직원 정보 수정 실패!';
+                    errorMessage = '회원 정보 수정 실패!';
                     break;
                 case 'delete' :
-                    errorMessage = '직원 정보 삭제 실패!';
+                    errorMessage = '회원 정보 삭제 실패!';
                     break;
             }
 

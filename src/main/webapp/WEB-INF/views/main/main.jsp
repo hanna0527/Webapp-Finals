@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;  charset=UTF-8" language="java" pageEncoding="UTF-8" %>
+<%@ page contentType="text/html;  charset=UTF-8" language="java" pageEncoding="UTF-8" errorPage="/WEB-INF/views/common/exceptionPage.jsp"%>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
 
 <html>
