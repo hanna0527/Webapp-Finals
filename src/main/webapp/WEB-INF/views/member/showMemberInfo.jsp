@@ -1,11 +1,10 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" errorPage="/WEB-INF/views/common/exceptionPage.jsp"%>
 <html>
 <head>
     <title>show member info</title>
 </head>
 <body>
     <jsp:include page="../common/header.jsp"/>
-
     회원 번호 : ${requestScope.selectedMember.memberCode}<br>
     회원 이름 : ${requestScope.selectedMember.memberName}<br>
     생년월일 : ${requestScope.selectedMember.birthDate}<br>
