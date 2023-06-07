@@ -17,11 +17,11 @@ public class SelectAllMemberServlet extends HttpServlet {
         List<MemberDTO> memberList = memberService.selectAllMember();
 
         String path = "";
-        if(memberList != null) {
+        if(memberList != null && memberList.size() > 0) {
             path = "/WEB-INF/views/member/memberList.jsp";
             request.setAttribute("memberList", memberList);
         } else {
-            path = "/WEB-INF/common.errorPage.jsp";
+            path = "/WEB-INF/views/common/errorPage.jsp";
             request.setAttribute("errorCode", "selectAll");
         }
 
