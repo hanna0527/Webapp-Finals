@@ -20,7 +20,7 @@
            function fetchData(){
                var inputValue = document.getElementById('CompareMemberId').value;
               $.ajax({
-                  url:"member/code",
+                  url:"/member/code",
                   type:"get",
                   data:{inputValue : inputValue},
                   success: function (data, textStatus, xhr) {
