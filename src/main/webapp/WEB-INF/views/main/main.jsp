@@ -24,7 +24,7 @@
                   type:"get",
                   data:{inputValue : inputValue},
                   success: function (data, textStatus, xhr) {
-                      $("#compareId").text(data)
+                      $("#compareId").html(data)
                   },
                   error: function (xhr, status, error) {
                       alert(error);

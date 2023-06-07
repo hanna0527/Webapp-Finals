@@ -31,9 +31,9 @@ public class MemberIdExsistsServlet extends HttpServlet {
             PrintWriter out = response.getWriter();
 
             if (result != null) {
-                output = "존재하는 회원입니다!";
+                output = "<span style=\"color: blue;\">존재하는 회원입니다!</span>";
             } else {
-                output = "존재하지 않는 회원입니다.";
+                output = "<span style=\"color: red;\">존재하지 않는 회원입니다.</span>";
             }
 
             out.println(output);
