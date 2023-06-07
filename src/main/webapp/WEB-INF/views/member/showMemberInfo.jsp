@@ -14,7 +14,7 @@
     전화 번호 : ${requestScope.selectedMember.contact}<br>
     가입 날짜 : ${requestScope.selectedMember.startDate}<br>
     활동 여부 : ${requestScope.selectedMember.activeStatus}<br>
-    <h3><a href="${pageContext.servletContext.contextPath}/member/main">메인 화면으로 돌아가기</a></h3>
+    <button onclick="location.href='${pageContext.servletContext.contextPath}/member/main'">메인화면으로 돌아가기</button>
 
 </body>
 </html>
