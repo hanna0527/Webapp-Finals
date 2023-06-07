@@ -32,6 +32,12 @@
         FROM member_info;
     </select>
 
+    <select id="memberIdExsists" parameterType="hashmap" resultType="java.lang.String">
+        SELECT MEMBER_CODE
+        FROM member_info
+        WHERE MEMBER_CODE = #{memberId}
+    </select>
+
 
     <select id="selectMemberById" parameterType="hashmap" resultMap="memberResultMap">
         SELECT MEMBER_CODE

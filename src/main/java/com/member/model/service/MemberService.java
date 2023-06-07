@@ -31,11 +31,16 @@ public class MemberService {
 
         MemberDTO result = memberDAO.selectMemberById(parameter);
 
-        if(result != null) {
-            sqlSession.commit();
-        } else {
-            sqlSession.rollback();
-        }
+        sqlSession.close();
+
+        return result;
+    }
+
+    public String memberIdExsists(Map<String, String> parameter) {
+        SqlSession sqlSession = getSqlSession();
+        memberDAO = sqlSession.getMapper(MemberDAO.class);
+
+        String result = memberDAO.memberIdExsists(parameter);
 
         sqlSession.close();
 

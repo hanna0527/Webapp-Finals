@@ -1,4 +1,6 @@
 <%@ page contentType="text/html;  charset=UTF-8" language="java" pageEncoding="UTF-8" %>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+
 <html>
 <head>
     <title>main</title>
@@ -10,7 +12,27 @@
 
   <h3>블로그 회원 회원 코드로 조회</h3>
   <form action="${pageContext.servletContext.contextPath}/member/select" method="post">
-    회원 코드 : <input type="number" min="1" name="memberId"><br>
+    회원 코드 : <input type="number" min="1" name="memberId" id="CompareMemberId" onkeyup="fetchData()">
+      <p id="compareId"></p>
+
+      <!-- 입력받은 코드 번호 회원이 DB에 존재하는지 여부 판단 -->
+      <script>
+           function fetchData(){
+               var inputValue = document.getElementById('CompareMemberId').value;
+              $.ajax({
+                  url:"member/code",
+                  type:"get",
+                  data:{inputValue : inputValue},
+                  success: function (data, textStatus, xhr) {
+                      $("#compareId").text(data)
+                  },
+                  error: function (xhr, status, error) {
+                      alert(error);
+                  }
+              });
+          }
+      </script>
+
     <button type="submit">회원 조회</button>
   </form>
   <br>

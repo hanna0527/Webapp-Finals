@@ -18,5 +18,5 @@ public interface MemberDAO {
 
     int deleteMember(Map<String, String> parameter);
 
-
+    String memberIdExsists(Map<String, String> parameter);
 }
