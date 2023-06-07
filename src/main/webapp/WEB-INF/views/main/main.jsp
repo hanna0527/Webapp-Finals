@@ -13,7 +13,7 @@
 
   <h3>블로그 회원 회원 코드로 조회</h3>
   <form action="${pageContext.servletContext.contextPath}/member/select" method="post">
-    회원 코드 : <input type="number" min="1" name="memberId" id="CompareMemberId" onkeyup="fetchData('CompareMemberId', 'compareIdFind')">
+    회원 코드 : <input type="number" min="1" name="memberId" id="CompareMemberId" onkeyup="fetchData('CompareMemberId', 'compareIdFind')" required>
       <p id="compareIdFind"></p>
 
       <!-- 입력받은 코드 번호 회원이 DB에 존재하는지 여부 판단 -->
@@ -117,7 +117,7 @@
 
 <h3>해당하는 회원 코드의 회원 삭제하기</h3>
   <form action="${ pageContext.servletContext.contextPath }/member/delete" method="post">
-      회원 코드 : <input type="number" min="1" name="memberId" id="memberIdDelete" onkeyup="fetchData('memberIdDelete', 'compareIdDelete')"><br>
+      회원 코드 : <input type="number" min="1" name="memberId" id="memberIdDelete" onkeyup="fetchData('memberIdDelete', 'compareIdDelete')" required><br>
       <p id="compareIdDelete"></p>
       <button type="submit">회원 삭제</button>
   </form>
