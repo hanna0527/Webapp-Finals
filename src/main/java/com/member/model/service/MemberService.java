@@ -59,6 +59,17 @@ public class MemberService {
         return newId;
     }
 
+    public List<MemberDTO> selectMemberByCategory(Map<String, String> parameter) {
+
+        SqlSession sqlSession = getSqlSession();
+        memberDAO = sqlSession.getMapper(MemberDAO.class);
+        List<MemberDTO> MemberList = memberDAO.selectMemberByCategory(parameter);
+
+        sqlSession.close();
+
+        return MemberList;
+    }
+
     public boolean registNewMember(MemberDTO member) {
 
         SqlSession sqlSession = getSqlSession();

@@ -13,6 +13,18 @@
         <result property="activeStatus" column="ACTIVE_STATUS"/>
     </resultMap>
 
+    <!-- CATEGORY_CODE를 없애고 CATEGORY_NAME을 추가 -->
+    <resultMap id="CategoryMemberResultMap" type="com.member.model.dto.MemberDTO">
+        <id property="memberCode" column="MEMBER_CODE"/>
+        <result property="memberName" column="MEMBER_NAME"/>
+        <result property="birthDate" column="BIRTH_DATE"/>
+        <result property="categoryName" column="CATEGORY_NAME"/>
+        <result property="introduce" column="INTRODUCE"/>
+        <result property="contact" column="CONTACT"/>
+        <result property="startDate" column="START_DATE"/>
+        <result property="activeStatus" column="ACTIVE_STATUS"/>
+    </resultMap>
+
     <select id="selectAllMember" resultMap="memberResultMap">
         SELECT MEMBER_CODE
             ,  MEMBER_NAME
@@ -52,6 +64,23 @@
         WHERE MEMBER_CODE = #{memberId}
         ORDER BY MEMBER_CODE
     </select>
+
+    <select id="selectMemberByCategory" parameterType="hashmap" resultMap="CategoryMemberResultMap">
+        SELECT    a.MEMBER_CODE
+                , a.MEMBER_NAME
+                , a.BIRTH_DATE
+                , b.CATEGORY_NAME
+                , a.INTRODUCE
+                , a.contact
+                , a.START_DATE
+                , a.ACTIVE_STATUS
+        FROM member_info a
+        JOIN category_info b
+        ON a.category_code = b.CATEGORY_CODE
+        WHERE a.category_code = #{categoryCode}
+        ORDER BY a.MEMBER_CODE;
+    </select>
+
 
     <insert id="registMember" parameterType="com.member.model.dto.MemberDTO">
         INSERT INTO member_info (

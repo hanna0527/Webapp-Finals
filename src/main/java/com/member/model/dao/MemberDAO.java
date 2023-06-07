@@ -10,6 +10,8 @@ public interface MemberDAO {
 
     MemberDTO selectMemberById(Map<String, String> parameter);
 
+    List<MemberDTO> selectMemberByCategory(Map<String, String> parameter);
+
     String selectNewMemberId();
 
     int registMember(MemberDTO member);

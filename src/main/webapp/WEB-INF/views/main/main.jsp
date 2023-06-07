@@ -38,6 +38,22 @@
   </form>
   <br>
 
+  <h3>장르별 회원 보기</h3>
+  <form action="${ pageContext.servletContext.contextPath }/member/selectByCategory" method="post">
+      장르 :
+      <select name="categoryCode">
+          <option value="1">개인</option>
+          <option value="2">전문가</option>
+          <option value="3">기업</option>
+          <option value="4">리뷰</option>
+          <option value="5">여행</option>
+          <option value="6">레시피</option>
+          <option value="7">패션</option>
+          <option value="8">IT/기술</option>
+          <option value="9">금융 /투자</option>
+      </select><br>
+      <button type="submit">회원 조회</button>
+  </form>
 
   <h3>신규 회원 정보 추가</h3>
   <form action="${ pageContext.servletContext.contextPath }/member/insert" method="post">

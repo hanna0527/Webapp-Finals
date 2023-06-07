@@ -6,6 +6,7 @@ public class MemberDTO implements java.io.Serializable{
     private int memberCode;
     private String memberName;
     private String birthDate;
+    private String categoryName;
     private String categoryCode;
     private String introduce;
     private String contact;
@@ -47,6 +48,14 @@ public class MemberDTO implements java.io.Serializable{
 
     public void setBirthDate(String birthDate) {
         this.birthDate = birthDate;
+    }
+
+    public String getCategoryName() {
+        return categoryName;
+    }
+
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
     }
 
     public String getCategoryCode() {
