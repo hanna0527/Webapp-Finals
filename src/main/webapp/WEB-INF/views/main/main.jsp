@@ -10,21 +10,22 @@
   <h3>블로그 회원 전체 조회</h3>
   <button onclick="location.href='${pageContext.servletContext.contextPath}/member/list'">전체 조회하기</button>
 
+
   <h3>블로그 회원 회원 코드로 조회</h3>
   <form action="${pageContext.servletContext.contextPath}/member/select" method="post">
-    회원 코드 : <input type="number" min="1" name="memberId" id="CompareMemberId" onkeyup="fetchData()">
-      <p id="compareId"></p>
+    회원 코드 : <input type="number" min="1" name="memberId" id="CompareMemberId" onkeyup="fetchData('CompareMemberId', 'compareIdFind')">
+      <p id="compareIdFind"></p>
 
       <!-- 입력받은 코드 번호 회원이 DB에 존재하는지 여부 판단 -->
       <script>
-           function fetchData(){
-               var inputValue = document.getElementById('CompareMemberId').value;
+           function fetchData(form, PId){
+               var inputValue = document.getElementById(form).value;
               $.ajax({
                   url:"/member/code",
                   type:"get",
                   data:{inputValue : inputValue},
                   success: function (data, textStatus, xhr) {
-                      $("#compareId").html(data)
+                      $("#" + PId).html(data)
                   },
                   error: function (xhr, status, error) {
                       alert(error);
@@ -36,6 +37,7 @@
     <button type="submit">회원 조회</button>
   </form>
   <br>
+
 
   <h3>신규 회원 정보 추가</h3>
   <form action="${ pageContext.servletContext.contextPath }/member/insert" method="post">
@@ -61,7 +63,8 @@
 
   <h3>해당 회원 코드의 회원 정보 수정 </h3>
   <form action="${ pageContext.servletContext.contextPath }/member/update" method="post" id="update">
-      수정할 회원 코드 : <input type="number" min=1 name="memberId" id="memberId" required><br>
+      수정할 회원 코드 : <input type="number" min=1 name="memberId" id="memberIdUpdate" required onkeyup="fetchData('memberIdUpdate', 'compareIdUpdate')"><br>
+      <p id="compareIdUpdate"></p>
       회원 이름 : <input type="text" name="memberName" maxlength="50"><br>
       생년 월일 : <input type="date" name="birthDate"><br>
       장르 코드 :
@@ -92,28 +95,11 @@
       <br>
   </form>
 
-  <!-- 수정할 회원번호만 적고 나머지 수정 input들은 하나도 적지 않은 경우 -->
-  <script>
-      document.getElementById("update").addEventListener('submit', function(event) {
-          let form = document.getElementById("update");
-          let inputs = form.querySelectorAll('input:not(#memberId), select, textarea');
 
-          for(var i = 0; i<inputs.length; i++) {
-              var input = inputs[i];
-              if (input.value.trim() !== '') {
-                  form.submit();
-                  return
-              } else {
-                  event.preventDefault();
-              }
-
-          }
-          alert("수정될 데이터가 없습니다!")
-      });
-  </script>
 <h3>해당하는 회원 코드의 회원 삭제하기</h3>
   <form action="${ pageContext.servletContext.contextPath }/member/delete" method="post">
-      회원 코드 : <input type="number" min="1" name="memberId"><br>
+      회원 코드 : <input type="number" min="1" name="memberId" id="memberIdDelete" onkeyup="fetchData('memberIdDelete', 'compareIdDelete')"><br>
+      <p id="compareIdDelete"></p>
       <button type="submit">회원 삭제</button>
   </form>
 </body>
