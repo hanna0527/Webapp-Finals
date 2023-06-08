@@ -8,29 +8,33 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
-@WebServlet("/member/select")
-public class SelectMemberById extends HttpServlet {
+
+@WebServlet("/member/selectByCategory")
+public class SelectMemberByCategoryServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String memberId = request.getParameter("memberId");
+        String categoryCode = request.getParameter("categoryCode");
+
+        MemberService memberService = new MemberService();
 
         Map<String, String> parameter = new HashMap<>();
 
-        parameter.put("memberId", memberId);
+        parameter.put("categoryCode", categoryCode);
 
-        MemberDTO result = new MemberService().selectMemberById(parameter);
+        List<MemberDTO> memberList = memberService.selectMemberByCategory(parameter);
 
         String path = "";
-        if(result != null) {
-            path = "/WEB-INF/views/member/showMemberInfo.jsp";
-            request.setAttribute("selectedMember", result);
+        if(memberList != null && memberList.size() > 0) {
+            path = "/WEB-INF/views/member/CategoryMemberList.jsp";
+            request.setAttribute("memberList", memberList);
         } else {
             path = "/WEB-INF/views/common/errorPage.jsp";
-            request.setAttribute("errorCode", "selectedMember");
+            request.setAttribute("errorCode", "selectAll");
         }
 
         request.getRequestDispatcher(path).forward(request, response);
     }
-}
+    }

@@ -6,7 +6,10 @@ public class MemberDTO implements java.io.Serializable{
     private int memberCode;
     private String memberName;
     private String birthDate;
+
+    // Category_Name은 member_info에는 없는 속성이지만 join해서 category_name을 잠시 사용해야 하는 기능 때문에 추가한다.
     private String categoryName;
+
     private String categoryCode;
     private String introduce;
     private String contact;
